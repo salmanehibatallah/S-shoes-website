@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Salmane Shoes — Shoes Manufacturing</title>
+<title>Salmane Chaussures — Shoe manufacturing</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231A1714'/%3E%3Ctext x='16' y='23' font-family='system-ui,-apple-system,sans-serif' font-size='17' font-weight='700' fill='%23C8A97A' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E" type="image/svg+xml" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
@@ -57,7 +57,21 @@
     color: var(--ink);
     text-decoration: none;
   }
-  .nav-logo span { color: var(--tan-dark); }
+  .nav-logo.nav-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+  }
+  .nav-brand-mark {
+    height: 38px;
+    width: auto;
+    max-width: 52px;
+    object-fit: contain;
+    flex-shrink: 0;
+    display: block;
+  }
+  .nav-brand-name span { color: var(--tan-dark); }
+  footer .nav-brand-name span { color: var(--tan); }
 
   .nav-links {
     display: flex;
@@ -514,6 +528,146 @@
     color: var(--muted);
   }
 
+  /* CREATIONS */
+  #creations {
+    background: #fff;
+    padding-top: clamp(2.75rem, 6vw, 4.5rem);
+    padding-bottom: clamp(2.75rem, 6vw, 4.5rem);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  #creations .section-title { max-width: 720px; }
+  .creations-intro {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: var(--muted);
+    max-width: 520px;
+    margin-top: 1rem;
+  }
+  .creations-row-block { margin-top: 2.5rem; }
+  .creations-row-block:first-of-type { margin-top: 1.5rem; }
+  .creations-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.35rem, 2.8vw, 1.85rem);
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.9rem;
+    letter-spacing: 0.03em;
+  }
+  .creations-shell {
+    position: relative;
+  }
+  .creations-track {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 4vw;
+    padding: 0.35rem 0 0.65rem;
+    margin: 0 -4vw;
+    padding-inline: 4vw;
+    cursor: grab;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(139, 107, 61, 0.45) transparent;
+  }
+  .creations-track:active { cursor: grabbing; }
+  .creations-track.is-dragging { scroll-snap-type: none; scroll-behavior: auto; }
+  .creations-track::-webkit-scrollbar { height: 5px; }
+  .creations-track::-webkit-scrollbar-track { background: transparent; }
+  .creations-track::-webkit-scrollbar-thumb {
+    background: rgba(139, 107, 61, 0.35);
+    border-radius: 99px;
+  }
+  .creations-track::-webkit-scrollbar-thumb:hover { background: rgba(139, 107, 61, 0.55); }
+  .creation-card {
+    flex: 0 0 min(290px, 86vw);
+    max-width: 320px;
+    scroll-snap-align: start;
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 20px rgba(26, 23, 20, 0.06);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+  .creation-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(26, 23, 20, 0.1);
+  }
+  .creation-card-media {
+    aspect-ratio: 4 / 5;
+    background: #fff;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(0.5rem, 2.5vw, 1rem);
+  }
+  .creation-card-media img {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  .creation-card:hover .creation-card-media img { transform: scale(1.025); }
+  .creation-card-body {
+    padding: 0.85rem 1rem 1rem;
+  }
+  .creation-card-body h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 0.35rem;
+  }
+  .creation-card-desc {
+    font-size: 0.78rem;
+    line-height: 1.45;
+    color: var(--muted);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .creations-nav {
+    display: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--ink);
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+  .creations-nav:hover {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: var(--ink);
+  }
+  .creations-nav:focus-visible { outline: 2px solid var(--tan); outline-offset: 2px; }
+  .creations-nav--prev { left: 0.25rem; }
+  .creations-nav--next { right: 0.25rem; }
+  @media (min-width: 901px) {
+    .creations-nav { display: flex; }
+    .creations-shell { padding: 0 2.75rem; }
+  }
+
   /* CONTACT */
   #contact { background: var(--cream); }
   .contact-inner {
@@ -612,6 +766,8 @@
     .nav-links.open { display: flex; }
     .lang-switcher { border-left: none; padding-left: 0; margin-left: 0; }
     .hamburger { display: flex; }
+    .nav-logo.nav-brand { font-size: 1.12rem; letter-spacing: 0.08em; gap: 0.5rem; }
+    .nav-brand-mark { height: 30px; max-width: 40px; }
   }
 
   /* ANIMATIONS */
@@ -626,11 +782,15 @@
 
 <!-- NAV -->
 <nav id="main-nav">
-  <a href="#hero" class="nav-logo">Salmane<span>Shoes</span></a>
+  <a href="#hero" class="nav-logo nav-brand" aria-label="Salmane Chaussures — home">
+    <img src="shoes/logo-ss.png" alt="" class="nav-brand-mark" width="52" height="38" decoding="async" />
+    <span class="nav-brand-name">Salmane<span>Chaussures</span></span>
+  </a>
   <ul class="nav-links" id="nav-links">
     <li><a href="#about" data-i18n="nav.about">About Us</a></li>
     <li><a href="#services" data-i18n="nav.services">Services</a></li>
     <li><a href="#why" data-i18n="nav.why">Why Us</a></li>
+    <li><a href="#creations" data-i18n="nav.creations">Our creations</a></li>
     <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
   </ul>
   <div class="mobile-actions">
@@ -690,7 +850,7 @@
   <div class="about-grid">
     <div class="about-img-block fade-in">
       <div class="about-img-placeholder">
-        <img src="https://placehold.co/600x800/1A1714/C8A97A?text=Salmane+Shoes" alt="Salmane Shoes" width="600" height="800" loading="lazy" decoding="async" />
+        <img src="https://placehold.co/600x800/1A1714/C8A97A?text=Salmane+Chaussures" alt="Salmane Chaussures" width="600" height="800" loading="lazy" decoding="async" />
       </div>
       <div class="about-float-card">
         <div class="about-float-num">2006</div>
@@ -699,7 +859,7 @@
     </div>
     <div class="about-text fade-in">
       <h3 data-i18n="about.h.history">Our History</h3>
-      <p data-i18n="about.p.history">Born from a passion for craftsmanship, Salmane Shoes was founded in 2006 in Morocco with a single workshop and a bold ambition: to bring European-quality shoes to market at competitive manufacturing costs. In nearly two decades, we grew from 10 artisans to a 300-person operation without losing what made us special — attention to every stitch.</p>
+      <p data-i18n="about.p.history">Born from a passion for craftsmanship, Salmane Chaussures was founded in 2006 in Morocco with a single workshop and a bold ambition: to bring European-quality shoes to market at competitive manufacturing costs. In nearly two decades, we grew from 10 artisans to a 300-person operation without losing what made us special — attention to every stitch.</p>
 
       <h3 data-i18n="about.h.experience">Experience & Know-How</h3>
       <p data-i18n="about.p.experience">We work with brands across France, Spain, Portugal, and the UK — from emerging designers to established labels. Our team masters every technique: Goodyear welt, Blake stitch, cemented construction, and bespoke finishing. Whatever your design demands, we have the skills to execute it precisely.</p>
@@ -777,9 +937,121 @@
   </div>
 </section>
 
+<!-- CREATIONS -->
+<section id="creations" aria-labelledby="creations-heading">
+  <p class="section-eyebrow fade-in" data-i18n="creations.eyebrow">04 — Our creations</p>
+  <h2 class="section-title fade-in" id="creations-heading" data-i18n="creations.title">Our <em>creations</em></h2>
+  <p class="creations-intro fade-in" data-i18n="creations.desc">Discover original creations by Salmane Chaussures, combining style, comfort, and craftsmanship.</p>
+
+  <div id="creations-row-women" class="creations-row-block fade-in">
+    <h3 class="creations-subtitle" data-i18n="creations.women">Women</h3>
+    <div class="creations-shell">
+      <button type="button" class="creations-nav creations-nav--prev" id="creations-prev-women" aria-controls="creations-track-women" data-i18n-aria-label="creations.prev" aria-label="Previous"><span aria-hidden="true">‹</span></button>
+      <button type="button" class="creations-nav creations-nav--next" id="creations-next-women" aria-controls="creations-track-women" data-i18n-aria-label="creations.next" aria-label="Next"><span aria-hidden="true">›</span></button>
+      <div class="creations-track" id="creations-track-women" tabindex="0" role="region" data-i18n-aria-label="creations.regionWomen" aria-label="Women’s creations">
+        <article class="creation-card">
+          <div class="creation-card-media"><img src="shoes/Trenzada.PNG" alt="Trenzada" width="280" height="267" loading="lazy" decoding="async" draggable="false" /></div>
+          <div class="creation-card-body">
+            <h3 data-i18n="creations.c1.title">Trenzada</h3>
+            <p class="creation-card-desc" data-i18n="creations.c1.desc">Pewter woven-leather Chelsea boot with a western block heel. Metallic edge meets cool attitude.</p>
+          </div>
+        </article>
+        <article class="creation-card">
+          <div class="creation-card-media"><img src="shoes/Belmont.PNG" alt="Belmont" width="280" height="267" loading="lazy" decoding="async" draggable="false" /></div>
+          <div class="creation-card-body">
+            <h3 data-i18n="creations.c2.title">Belmont</h3>
+            <p class="creation-card-desc" data-i18n="creations.c2.desc">Chocolate suede ankle boot with patent cap toe and buckle detail. Parisian chic in every step.</p>
+          </div>
+        </article>
+        <article class="creation-card">
+          <div class="creation-card-media"><img src="shoes/Costeira.PNG" alt="Costeira" width="280" height="267" loading="lazy" decoding="async" draggable="false" /></div>
+          <div class="creation-card-body">
+            <h3 data-i18n="creations.c3.title">Costeira</h3>
+            <p class="creation-card-desc" data-i18n="creations.c3.desc">Bronze metallic cross-strap mule on a herringbone jute wedge. Summer glamour, artisan soul.</p>
+          </div>
+        </article>
+        <article class="creation-card">
+          <div class="creation-card-media"><img src="shoes/Solara.PNG" alt="Solara" width="280" height="267" loading="lazy" decoding="async" draggable="false" /></div>
+          <div class="creation-card-body">
+            <h3 data-i18n="creations.c4.title">Solara</h3>
+            <p class="creation-card-desc" data-i18n="creations.c4.desc">Rose-gold slingback wedge with crossover straps on a braided platform. Sunset elegance, effortless comfort.</p>
+          </div>
+        </article>
+        <article class="creation-card">
+          <div class="creation-card-media"><img src="shoes/Marfil.PNG" alt="Marfil" width="280" height="267" loading="lazy" decoding="async" draggable="false" /></div>
+          <div class="creation-card-body">
+            <h3 data-i18n="creations.c5.title">Marfil</h3>
+            <p class="creation-card-desc" data-i18n="creations.c5.desc">Cream leather T-bar wedge sandal on a two-tone braided platform. Clean, classic, endlessly versatile.</p>
+          </div>
+        </article>
+        <article class="creation-card">
+          <div class="creation-card-media"><img src="shoes/Savana.PNG" alt="Savana" width="280" height="267" loading="lazy" decoding="async" draggable="false" /></div>
+          <div class="creation-card-body">
+            <h3 data-i18n="creations.c6.title">Savana</h3>
+            <p class="creation-card-desc" data-i18n="creations.c6.desc">Dalmatian-print calf-hair sandal on a suede and rope platform. Wild print, earthy soul.</p>
+          </div>
+        </article>
+        <article class="creation-card">
+          <div class="creation-card-media"><img src="shoes/Notte%20Selvaggia.PNG" alt="Notte Selvaggia" width="280" height="267" loading="lazy" decoding="async" draggable="false" /></div>
+          <div class="creation-card-body">
+            <h3 data-i18n="creations.c7.title">Notte Selvaggia</h3>
+            <p class="creation-card-desc" data-i18n="creations.c7.desc">Dark grey leopard suede pointed pump. Fierce elegance on a mid-heel.</p>
+          </div>
+        </article>
+        <article class="creation-card">
+          <div class="creation-card-media"><img src="shoes/Midas.PNG" alt="Midas" width="280" height="267" loading="lazy" decoding="async" draggable="false" /></div>
+          <div class="creation-card-body">
+            <h3 data-i18n="creations.c8.title">Midas</h3>
+            <p class="creation-card-desc" data-i18n="creations.c8.desc">Gold metallic leather pump with a sculpted heel. Pure glamour, day to night.</p>
+          </div>
+        </article>
+        <article class="creation-card">
+          <div class="creation-card-media"><img src="shoes/Saffron.PNG" alt="Saffron" width="280" height="267" loading="lazy" decoding="async" draggable="false" /></div>
+          <div class="creation-card-body">
+            <h3 data-i18n="creations.c9.title">Saffron</h3>
+            <p class="creation-card-desc" data-i18n="creations.c9.desc">Mustard suede pump with a soft cone heel. Retro charm in a sunny hue.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <div id="creations-row-men" class="creations-row-block fade-in">
+    <h3 class="creations-subtitle" data-i18n="creations.men">Men</h3>
+    <div class="creations-shell">
+      <button type="button" class="creations-nav creations-nav--prev" id="creations-prev-men" aria-controls="creations-track-men" data-i18n-aria-label="creations.prev" aria-label="Previous"><span aria-hidden="true">‹</span></button>
+      <button type="button" class="creations-nav creations-nav--next" id="creations-next-men" aria-controls="creations-track-men" data-i18n-aria-label="creations.next" aria-label="Next"><span aria-hidden="true">›</span></button>
+      <div class="creations-track" id="creations-track-men" tabindex="0" role="region" data-i18n-aria-label="creations.regionMen" aria-label="Men’s creations">
+        <article class="creation-card">
+          <div class="creation-card-media"><img src="shoes/Bosque.PNG" alt="" width="280" height="267" loading="lazy" decoding="async" draggable="false" /></div>
+          <div class="creation-card-body">
+            <h3 data-i18n="creations.m1.title">Bosque</h3>
+            <p class="creation-card-desc" data-i18n="creations.m1.desc">Olive green suede moc-toe lace-up on a white sport sole. Casual style rooted in nature.
+            </p>
+          </div>
+        </article>
+        <article class="creation-card">
+          <div class="creation-card-media"><img src="shoes/Marea.PNG" alt="" width="280" height="267" loading="lazy" decoding="async" draggable="false" /></div>
+          <div class="creation-card-body">
+            <h3 data-i18n="creations.m2.title">New models</h3>
+            <p class="creation-card-desc" data-i18n="creations.m2.desc">Follow this space for derby, sneaker, and boot previews.</p>
+          </div>
+        </article>
+        <article class="creation-card">
+          <div class="creation-card-media"><img src="shoes/Timón.PNG" alt="" width="280" height="267" loading="lazy" decoding="async" draggable="false" /></div>
+          <div class="creation-card-body">
+            <h3 data-i18n="creations.m3.title">Stay tuned</h3>
+            <p class="creation-card-desc" data-i18n="creations.m3.desc">The men’s line is in development — check back soon.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section id="contact">
-  <p class="section-eyebrow fade-in" data-i18n="contact.eyebrow">04 — Contact Us</p>
+  <p class="section-eyebrow fade-in" data-i18n="contact.eyebrow">05 — Contact Us</p>
   <h2 class="section-title fade-in" data-i18n="contact.title">Let's Build<br>Something <em>Together</em></h2>
   <div class="contact-inner">
     <div class="contact-info fade-in">
@@ -854,15 +1126,18 @@
 
 <!-- FOOTER -->
 <footer>
-  <a href="#hero" class="nav-logo">Salmane<span style="color:var(--tan)">Shoes</span></a>
-  <p data-i18n="footer.copy">© 2025 Salmane Shoes Morocco. All rights reserved.</p>
+  <a href="#hero" class="nav-logo nav-brand" aria-label="Salmane Chaussures — home">
+    <img src="shoes/logo-ss.png" alt="" class="nav-brand-mark" width="52" height="38" decoding="async" />
+    <span class="nav-brand-name">Salmane<span>Chaussures</span></span>
+  </a>
+  <p data-i18n="footer.copy">© 2025 Salmane Chaussures Morocco. All rights reserved.</p>
 </footer>
 
 <script>
 // ─── TRANSLATIONS ────────────────────────────────────────────────
 const i18n = {
   en: {
-    "nav.about":"About Us","nav.services":"Services","nav.why":"Why Us","nav.contact":"Contact",
+    "nav.about":"About Us","nav.services":"Services","nav.why":"Why Us","nav.creations":"Our creations","nav.contact":"Contact",
     "hero.eyebrow":"Morocco — Est. 2006",
     "hero.title":"Crafting <em>Shoes</em><br>That Carry<br>Your Brand",
     "hero.sub":"Manufacturing premium shoes in Morocco — competitive costs, European proximity, full flexibility from uppers to finished pairs.",
@@ -873,7 +1148,7 @@ const i18n = {
     "about.title":"A Family of <em>Artisans</em>,<br>An Industrial Scale",
     "about.founded":"Year Founded",
     "about.h.history":"Our History","about.h.experience":"Experience & Know-How","about.h.vision":"Our Vision",
-    "about.p.history":"Born from a passion for craftsmanship, Salmane Shoes was founded in 2006 in Morocco with a single workshop and a bold ambition: to bring European-quality shoes to market at competitive manufacturing costs. In nearly two decades, we grew from 10 artisans to a 300-person operation without losing what made us special — attention to every stitch.",
+    "about.p.history":"Born from a passion for craftsmanship, Salmane Chaussures was founded in 2006 in Morocco with a single workshop and a bold ambition: to bring European-quality shoes to market at competitive manufacturing costs. In nearly two decades, we grew from 10 artisans to a 300-person operation without losing what made us special — attention to every stitch.",
     "about.p.experience":"We work with brands across France, Spain, Portugal, and the UK — from emerging designers to established labels. Our team masters every technique: Goodyear welt, Blake stitch, cemented construction, and bespoke finishing. Whatever your design demands, we have the skills to execute it precisely.",
     "about.p.vision":"We believe Morocco is the future of responsible, European-quality manufacturing of shoes. Our vision: to be the preferred partner for brands that want quality, transparency, and a supplier they can actually visit in a single afternoon flight from Paris or Madrid.",
     "services.eyebrow":"02 — Services",
@@ -886,7 +1161,26 @@ const i18n = {
     "w1.title":"Competitive Costs","w1.desc":"Manufacturing in Morocco delivers 30–50% cost advantage over European factories — without compromising on quality, certifications, or working conditions. Every cent saved goes to your margins or your product.",
     "w2.title":"European Proximity","w2.desc":"3 hours from Paris. 2 hours from Madrid. Direct sea freight to major European ports. Visit your production line the same day you take the decision. React to market changes in days, not weeks.",
     "w3.title":"True Flexibility","w3.desc":"Small brand or large retailer, we adapt. Low MOQs on first orders, scalable capacity for large runs. Mixed models, quick turnarounds, and a dedicated account manager who answers on WhatsApp.",
-    "contact.eyebrow":"04 — Contact Us",
+    "creations.eyebrow":"04 — Our creations",
+    "creations.title":"Our <em>creations</em>",
+    "creations.desc":"Discover original creations by Salmane Chaussures, combining style, comfort, and craftsmanship.",
+    "creations.women":"Women","creations.men":"Men",
+    "creations.prev":"Show previous","creations.next":"Show next",
+    "creations.regionWomen":"Women’s creations — scroll horizontally",
+    "creations.regionMen":"Men’s creations — scroll horizontally",
+    "creations.c1.title":"Trenzada","creations.c1.desc":"Pewter woven-leather Chelsea boot with a western block heel. Metallic edge meets cool attitude.",
+    "creations.c2.title":"Belmont","creations.c2.desc":"Chocolate suede ankle boot with patent cap toe and buckle detail. Parisian chic in every step.",
+    "creations.c3.title":"Costeira","creations.c3.desc":"Bronze metallic cross-strap mule on a herringbone jute wedge. Summer glamour, artisan soul.",
+    "creations.c4.title":"Solara","creations.c4.desc":"Rose-gold slingback wedge with crossover straps on a braided platform. Sunset elegance, effortless comfort.",
+    "creations.c5.title":"Marfil","creations.c5.desc":"Cream leather T-bar wedge sandal on a two-tone braided platform. Clean, classic, endlessly versatile.",
+    "creations.c6.title":"Savana","creations.c6.desc":"Dalmatian-print calf-hair sandal on a suede and rope platform. Wild print, earthy soul.",
+    "creations.c7.title":"Notte Selvaggia","creations.c7.desc":"Dark grey leopard suede pointed pump. Fierce elegance on a mid-heel.",
+    "creations.c8.title":"Midas","creations.c8.desc":"Gold metallic leather pump with a sculpted heel. Pure glamour, day to night.",
+    "creations.c9.title":"Saffron","creations.c9.desc":"Mustard suede pump with a soft cone heel. Retro charm in a sunny hue.",
+    "creations.m1.title":"Coming soon","creations.m1.desc":"Men’s silhouettes will be added to this gallery shortly.",
+    "creations.m2.title":"New models","creations.m2.desc":"Follow this space for derby, sneaker, and boot previews.",
+    "creations.m3.title":"Stay tuned","creations.m3.desc":"The men’s line is in development — check back soon.",
+    "contact.eyebrow":"05 — Contact Us",
     "contact.title":"Let's Build<br>Something <em>Together</em>",
     "contact.intro":"Ready to discuss your project? Reach out via the form, WhatsApp, or email — we typically respond within 24 hours.",
     "contact.whatsapp.label":"WhatsApp","contact.whatsapp.desc":"Quick questions, samples, or urgent requests — message us directly.",
@@ -897,10 +1191,10 @@ const i18n = {
     "form.volume":"Estimated Monthly Volume","form.v0":"— Select volume —","form.v1":"Under 500 pairs","form.v2":"500 – 2,000 pairs","form.v3":"2,000 – 10,000 pairs","form.v4":"10,000+ pairs",
     "form.message":"Message","form.messagePh":"Tell us about your project, timeline, and any specific requirements...","form.submit":"Send Message →",
     "form.success":"Thank you! We'll be in touch within 24 hours.",
-    "footer.copy":"© 2025 Salmane Shoes Morocco. All rights reserved."
+    "footer.copy":"© 2025 Salmane Chaussures Morocco. All rights reserved."
   },
   fr: {
-    "nav.about":"À propos","nav.services":"Services","nav.why":"Pourquoi nous","nav.contact":"Contact",
+    "nav.about":"À propos","nav.services":"Services","nav.why":"Pourquoi nous","nav.creations":"Nos créations","nav.contact":"Contact",
     "hero.eyebrow":"Maroc — Fondé en 2006",
     "hero.title":"Fabriquer des <em>chaussures</em><br>qui Portent<br>Votre Marque",
     "hero.sub":"Fabrication de chaussures premium au Maroc — coûts compétitifs, proximité européenne, flexibilité totale des tiges aux paires finies.",
@@ -911,7 +1205,7 @@ const i18n = {
     "about.title":"Une Famille d'<em>Artisans</em>,<br>Une Échelle Industrielle",
     "about.founded":"Année de création",
     "about.h.history":"Notre Histoire","about.h.experience":"Expérience & Savoir-Faire","about.h.vision":"Notre Vision",
-    "about.p.history":"Née d'une passion pour l'artisanat, Salmane Shoes a été fondée en 2006 au Maroc avec un seul atelier et une ambition audacieuse : apporter la qualité européenne de la fabrication de chaussures à des coûts compétitifs. En près de 20 ans, nous sommes passés de 10 artisans à une équipe de 300 personnes sans perdre ce qui nous rend spéciaux — l'attention portée à chaque point.",
+    "about.p.history":"Née d'une passion pour l'artisanat, Salmane Chaussures a été fondée en 2006 au Maroc avec un seul atelier et une ambition audacieuse : apporter la qualité européenne de la fabrication de chaussures à des coûts compétitifs. En près de 20 ans, nous sommes passés de 10 artisans à une équipe de 300 personnes sans perdre ce qui nous rend spéciaux — l'attention portée à chaque point.",
     "about.p.experience":"Nous travaillons avec des marques en France, Espagne, Portugal et Royaume-Uni — des créateurs émergents aux labels établis. Notre équipe maîtrise toutes les techniques : couture Goodyear, point Blake, construction collée et finitions sur mesure.",
     "about.p.vision":"Nous croyons que le Maroc est l'avenir de la fabrication de chaussures européenne responsable. Notre vision : être le partenaire privilégié des marques qui veulent qualité, transparence et un fournisseur accessible en un simple vol depuis Paris ou Madrid.",
     "services.eyebrow":"02 — Services",
@@ -924,7 +1218,26 @@ const i18n = {
     "w1.title":"Coûts Compétitifs","w1.desc":"La fabrication au Maroc offre un avantage de coût de 30 à 50 % par rapport aux usines européennes — sans compromettre la qualité, les certifications ou les conditions de travail.",
     "w2.title":"Proximité Européenne","w2.desc":"3 heures de Paris. 2 heures de Madrid. Fret maritime direct vers les grands ports européens. Visitez votre ligne de production le jour même de votre décision.",
     "w3.title":"Flexibilité Totale","w3.desc":"Petite marque ou grand distributeur, nous nous adaptons. Faibles MOQs sur les premières commandes, capacité évolutive pour les grandes séries. Un responsable de compte dédié qui répond sur WhatsApp.",
-    "contact.eyebrow":"04 — Contactez-nous",
+    "creations.eyebrow":"04 — Nos créations",
+    "creations.title":"Nos <em>créations</em>",
+    "creations.desc":"Découvrez les créations originales de Salmane Chaussures, alliant style, confort et savoir-faire.",
+    "creations.women":"Femmes","creations.men":"Hommes",
+    "creations.prev":"Voir précédent","creations.next":"Voir suivant",
+    "creations.regionWomen":"Créations femmes — faire défiler horizontalement",
+    "creations.regionMen":"Créations hommes — faire défiler horizontalement",
+    "creations.c1.title":"Trenzada","creations.c1.desc":"Bottine Chelsea en cuir tressé argenté à talon western. L'audace métallique au quotidien.",
+    "creations.c2.title":"Belmont","creations.c2.desc":"Bottine en daim chocolat avec bout verni et boucle. Le chic parisien à chaque pas.",
+    "creations.c3.title":"Costeira","creations.c3.desc":"Mule croisée bronze métallisé sur compensé en jute chevron. Glamour estival, âme artisanale.",
+    "creations.c4.title":"Solara","creations.c4.desc":"Compensée à bride arrière or rosé, lanières croisées sur plateforme tressée. Élégance du crépuscule, confort absolu.",
+    "creations.c5.title":"Marfil","creations.c5.desc":"Sandale compensée en cuir crème à bride en T sur plateforme tressée bicolore. Classique, épurée, infiniment polyvalente.",
+    "creations.c6.title":"Savana","creations.c6.desc":"Sandale en veau imprimé dalmatien sur plateforme daim et corde. Imprimé sauvage, esprit naturel.",
+    "creations.c7.title":"Notte Selvaggia","creations.c7.desc":"Escarpin pointu en daim léopard gris foncé. L'élégance sauvage sur talon moyen.",
+    "creations.c8.title":"Midas","creations.c8.desc":"Escarpin en cuir doré métallisé à talon galbé. Glamour pur, du jour à la nuit.",
+    "creations.c9.title":"Saffron","creations.c9.desc":"Escarpin en daim moutarde à talon conique. Charme rétro aux tons ensoleillés.",
+    "creations.m1.title":"Bientôt","creations.m1.desc":"Les silhouettes homme seront ajoutées à cette galerie prochainement.",
+    "creations.m2.title":"Nouveaux modèles","creations.m2.desc":"Rendez-vous ici pour des aperçus derby, sneakers et bottines.",
+    "creations.m3.title":"Restez informés","creations.m3.desc":"La ligne homme est en cours de développement — revenez vite.",
+    "contact.eyebrow":"05 — Contactez-nous",
     "contact.title":"Construisons<br><em>Ensemble</em>",
     "contact.intro":"Prêt à discuter de votre projet ? Contactez-nous via le formulaire, WhatsApp ou email — nous répondons généralement sous 24 heures.",
     "contact.whatsapp.label":"WhatsApp","contact.whatsapp.desc":"Questions rapides, échantillons ou demandes urgentes — messagez-nous directement.",
@@ -935,10 +1248,10 @@ const i18n = {
     "form.volume":"Volume Mensuel Estimé","form.v0":"— Sélectionner —","form.v1":"Moins de 500 paires","form.v2":"500 – 2 000 paires","form.v3":"2 000 – 10 000 paires","form.v4":"10 000+ paires",
     "form.message":"Message","form.messagePh":"Parlez-nous de votre projet, délais et exigences spécifiques...","form.submit":"Envoyer →",
     "form.success":"Merci ! Nous vous contacterons dans les 24 heures.",
-    "footer.copy":"© 2025 Salmane Shoes Maroc. Tous droits réservés."
+    "footer.copy":"© 2025 Salmane Chaussures Maroc. Tous droits réservés."
   },
   es: {
-    "nav.about":"Nosotros","nav.services":"Servicios","nav.why":"Por qué nosotros","nav.contact":"Contacto",
+    "nav.about":"Nosotros","nav.services":"Servicios","nav.why":"Por qué nosotros","nav.creations":"Nuestras creaciones","nav.contact":"Contacto",
     "hero.eyebrow":"Marruecos — Est. 2006",
     "hero.title":"Fabricando <em>zapatos</em><br>que Llevan<br>Tu Marca",
     "hero.sub":"Fabricación premium de zapatos en Marruecos — costos competitivos, proximidad europea y total flexibilidad desde cortes hasta pares terminados.",
@@ -949,7 +1262,7 @@ const i18n = {
     "about.title":"Una Familia de <em>Artesanos</em>,<br>Escala Industrial",
     "about.founded":"Año de fundación",
     "about.h.history":"Nuestra Historia","about.h.experience":"Experiencia y Know-How","about.h.vision":"Nuestra Visión",
-    "about.p.history":"Nacida de la pasión por la artesanía, Salmane Shoes fue fundada en 2006 en Marruecos con un único taller y una ambición audaz: ofrecer calidad europea en la fabricación de zapatos a costos competitivos. En casi 20 años crecimos de 10 artesanos a 300 personas sin perder lo que nos hace especiales.",
+    "about.p.history":"Nacida de la pasión por la artesanía, Salmane Chaussures fue fundada en 2006 en Marruecos con un único taller y una ambición audaz: ofrecer calidad europea en la fabricación de zapatos a costos competitivos. En casi 20 años crecimos de 10 artesanos a 300 personas sin perder lo que nos hace especiales.",
     "about.p.experience":"Trabajamos con marcas de Francia, España, Portugal y Reino Unido — desde diseñadores emergentes hasta marcas consolidadas. Nuestro equipo domina todas las técnicas: costura Goodyear, Blake stitch, construcción pegada y acabados a medida.",
     "about.p.vision":"Creemos que Marruecos es el futuro de la fabricación responsable de zapatos con calidad europea. Ser el socio preferido de marcas que buscan calidad, transparencia y un proveedor al que pueden visitar en una tarde desde Madrid o París.",
     "services.eyebrow":"02 — Servicios",
@@ -962,7 +1275,26 @@ const i18n = {
     "w1.title":"Costos Competitivos","w1.desc":"Fabricar en Marruecos supone una ventaja de coste del 30–50% frente a fábricas europeas, sin comprometer calidad, certificaciones ni condiciones laborales.",
     "w2.title":"Proximidad Europea","w2.desc":"3 horas de París. 2 horas de Madrid. Flete marítimo directo a puertos europeos. Visita tu línea de producción el mismo día que tomas la decisión.",
     "w3.title":"Flexibilidad Real","w3.desc":"Marca pequeña o gran distribuidor, nos adaptamos. MOQs bajos en primeros pedidos, capacidad escalable para grandes producciones y un gestor de cuenta en WhatsApp.",
-    "contact.eyebrow":"04 — Contacto",
+    "creations.eyebrow":"04 — Nuestras creaciones",
+    "creations.title":"Nuestras <em>creaciones</em>",
+    "creations.desc":"Descubre las creaciones originales de Salmane Chaussures, combinando estilo, comodidad y savoir-faire.",
+    "creations.women":"Mujeres","creations.men":"Hombres",
+    "creations.prev":"Ver anterior","creations.next":"Ver siguiente",
+    "creations.regionWomen":"Creaciones mujer — desplazar horizontalmente",
+    "creations.regionMen":"Creaciones hombre — desplazar horizontalmente",
+    "creations.c1.title":"Trenzada","creations.c1.desc":"Botín Chelsea de piel trenzada plateada con tacón western. Audacia metálica con actitud.",
+    "creations.c2.title":"Belmont","creations.c2.desc":"Botín de ante chocolate con puntera charol y hebilla. Chic parisino en cada paso.",
+    "creations.c3.title":"Costeira","creations.c3.desc":"Zueco cruzado bronce metalizado sobre cuña de yute espiga. Glamour veraniego, alma artesanal.",
+    "creations.c4.title":"Solara","creations.c4.desc":"Cuña destalonada oro rosa con tiras cruzadas sobre plataforma trenzada. Elegancia al atardecer, comodidad total.",
+    "creations.c5.title":"Marfil","creations.c5.desc":"Sandalia cuña de piel crema con tira en T sobre plataforma trenzada bicolor. Clásica, limpia, infinitamente versátil.",
+    "creations.c6.title":"Savana","creations.c6.desc":"Sandalia de pelo dálmata sobre plataforma de ante y cuerda. Estampado salvaje, esencia natural.",
+    "creations.c7.title":"Notte Selvaggia","creations.c7.desc":"Salón de ante leopardo gris oscuro. Elegancia salvaje en tacón medio.",
+    "creations.c8.title":"Midas","creations.c8.desc":"Salón de piel dorada metalizada con tacón esculpido. Puro glamour, de día a noche.",
+    "creations.c9.title":"Saffron","creations.c9.desc":"Salón de ante mostaza con tacón cónico. Encanto retro en tono soleado.",
+    "creations.m1.title":"Próximamente","creations.m1.desc":"Las siluetas masculinas se añadirán a esta galería en breve.",
+    "creations.m2.title":"Nuevos modelos","creations.m2.desc":"Sigue este espacio para adelantos de derby, zapatilla y bota.",
+    "creations.m3.title":"Muy pronto","creations.m3.desc":"La línea masculina está en desarrollo — vuelve pronto.",
+    "contact.eyebrow":"05 — Contacto",
     "contact.title":"Creemos<br>Algo <em>Juntos</em>",
     "contact.intro":"¿Listo para hablar de tu proyecto? Escríbenos por el formulario, WhatsApp o email — respondemos en menos de 24 horas.",
     "contact.whatsapp.label":"WhatsApp","contact.whatsapp.desc":"Preguntas rápidas, muestras o solicitudes urgentes — escríbenos directamente.",
@@ -973,10 +1305,10 @@ const i18n = {
     "form.volume":"Volumen Mensual Estimado","form.v0":"— Seleccionar —","form.v1":"Menos de 500 pares","form.v2":"500 – 2.000 pares","form.v3":"2.000 – 10.000 pares","form.v4":"10.000+ pares",
     "form.message":"Mensaje","form.messagePh":"Cuéntanos sobre tu proyecto, plazos y requisitos específicos...","form.submit":"Enviar Mensaje →",
     "form.success":"¡Gracias! Te contactaremos en menos de 24 horas.",
-    "footer.copy":"© 2025 Salmane Shoes Marruecos. Todos los derechos reservados."
+    "footer.copy":"© 2025 Salmane Chaussures Marruecos. Todos los derechos reservados."
   },
   pt: {
-    "nav.about":"Sobre nós","nav.services":"Serviços","nav.why":"Por que nós","nav.contact":"Contacto",
+    "nav.about":"Sobre nós","nav.services":"Serviços","nav.why":"Por que nós","nav.creations":"Nossas criações","nav.contact":"Contacto",
     "hero.eyebrow":"Marrocos — Fund. 2006",
     "hero.title":"Criando <em>sapatos</em><br>que Carregam<br>a Sua Marca",
     "hero.sub":"Produção premium de sapatos em Marrocos — custos competitivos, proximidade europeia e total flexibilidade de cortes a pares acabados.",
@@ -987,7 +1319,7 @@ const i18n = {
     "about.title":"Uma Família de <em>Artesãos</em>,<br>Escala Industrial",
     "about.founded":"Ano de fundação",
     "about.h.history":"A Nossa História","about.h.experience":"Experiência & Know-How","about.h.vision":"A Nossa Visão",
-    "about.p.history":"Nascida de uma paixão pelo artesanato, a Salmane Shoes foi fundada em 2006 em Marrocos com um único atelier e uma ambição ousada: oferecer qualidade europeia na produção de sapatos a custos competitivos. Em quase 20 anos crescemos de 10 artesãos para 300 pessoas sem perder o que nos torna especiais.",
+    "about.p.history":"Nascida de uma paixão pelo artesanato, a Salmane Chaussures foi fundada em 2006 em Marrocos com um único atelier e uma ambição ousada: oferecer qualidade europeia na produção de sapatos a custos competitivos. Em quase 20 anos crescemos de 10 artesãos para 300 pessoas sem perder o que nos torna especiais.",
     "about.p.experience":"Trabalhamos com marcas de França, Espanha, Portugal e Reino Unido — de designers emergentes a marcas estabelecidas. A nossa equipa domina todas as técnicas: costura Goodyear, Blake stitch, construção colada e acabamentos personalizados.",
     "about.p.vision":"Acreditamos que Marrocos é o futuro da produção responsável de sapatos com qualidade europeia. Ser o parceiro preferido de marcas que querem qualidade, transparência e um fornecedor que podem visitar numa tarde de voo desde Lisboa ou Madrid.",
     "services.eyebrow":"02 — Serviços",
@@ -1000,7 +1332,26 @@ const i18n = {
     "w1.title":"Custos Competitivos","w1.desc":"Produzir em Marrocos oferece uma vantagem de custo de 30–50% face a fábricas europeias — sem comprometer qualidade, certificações ou condições laborais.",
     "w2.title":"Proximidade Europeia","w2.desc":"3 horas de Paris. 2 horas de Madrid. Frete marítimo directo para os principais portos europeus. Visite a linha de produção no mesmo dia em que toma a decisão.",
     "w3.title":"Flexibilidade Real","w3.desc":"Marca pequena ou grande retalhista, adaptamo-nos. MOQs baixos nas primeiras encomendas, capacidade escalável para grandes séries e um gestor de conta dedicado no WhatsApp.",
-    "contact.eyebrow":"04 — Contacto",
+    "creations.eyebrow":"04 — Nossas criações",
+    "creations.title":"Nossas <em>criações</em>",
+    "creations.desc":"Descubra as criações originais da Salmane Chaussures, combinando estilo, conforto e qualidade artesanal.",
+    "creations.women":"Mulheres","creations.men":"Homens",
+    "creations.prev":"Ver anterior","creations.next":"Ver seguinte",
+    "creations.regionWomen":"Criações femininas — percorrer na horizontal",
+    "creations.regionMen":"Criações masculinas — percorrer na horizontal",
+    "creations.c1.title":"Trenzada","creations.c1.desc":"Botim Chelsea em couro trançado prateado com salto western. Ousadia metálica com atitude.",
+    "creations.c2.title":"Belmont","creations.c2.desc":"Botim de camurça chocolate com biqueira envernizada e fivela. Chique parisiense a cada passo.",
+    "creations.c3.title":"Costeira","creations.c3.desc":"Mule cruzada bronze metalizado sobre cunha de juta espinha. Glamour de verão, alma artesanal.",
+    "creations.c4.title":"Solara","creations.c4.desc":"Cunha slingback ouro rosé com tiras cruzadas em plataforma trançada. Elegância ao pôr do sol, conforto total.",
+    "creations.c5.title":"Marfil","creations.c5.desc":"Sandália cunha em couro creme com tira em T sobre plataforma trançada bicolor. Clássica, limpa, infinitamente versátil.",
+    "creations.c6.title":"Savana","creations.c6.desc":"Sandália em pelo de vitelo dálmata sobre plataforma de camurça e corda. Estampa selvagem, essência natural.",
+    "creations.c7.title":"Notte Selvaggia","creations.c7.desc":"Scarpin de camurça leopardo cinza escuro. Elegância feroz num salto médio.",
+    "creations.c8.title":"Midas","creations.c8.desc":"Scarpin de couro dourado metalizado com salto esculpido. Glamour puro, do dia à noite.",
+    "creations.c9.title":"Saffron","creations.c9.desc":"Scarpin de camurça mostarda com salto cone. Charme retro em tom solar.",
+    "creations.m1.title":"Em breve","creations.m1.desc":"As silhuetas masculinas serão adicionadas a esta galeria em breve.",
+    "creations.m2.title":"Novos modelos","creations.m2.desc":"Acompanhe este espaço para pré-visualizações de derby, sneaker e bota.",
+    "creations.m3.title":"Fique atento","creations.m3.desc":"A linha masculina está em desenvolvimento — volte em breve.",
+    "contact.eyebrow":"05 — Contacto",
     "contact.title":"Vamos Criar<br><em>Juntos</em>",
     "contact.intro":"Pronto para falar do seu projecto? Contacte-nos pelo formulário, WhatsApp ou email — respondemos geralmente em 24 horas.",
     "contact.whatsapp.label":"WhatsApp","contact.whatsapp.desc":"Perguntas rápidas, amostras ou pedidos urgentes — envie-nos uma mensagem directamente.",
@@ -1011,7 +1362,7 @@ const i18n = {
     "form.volume":"Volume Mensal Estimado","form.v0":"— Seleccionar —","form.v1":"Menos de 500 pares","form.v2":"500 – 2.000 pares","form.v3":"2.000 – 10.000 pares","form.v4":"10.000+ pares",
     "form.message":"Mensagem","form.messagePh":"Fale-nos do seu projecto, prazos e requisitos específicos...","form.submit":"Enviar Mensagem →",
     "form.success":"Obrigado! Entraremos em contacto em 24 horas.",
-    "footer.copy":"© 2025 Salmane Shoes Marrocos. Todos os direitos reservados."
+    "footer.copy":"© 2025 Salmane Chaussures Marrocos. Todos os direitos reservados."
   }
 };
 
@@ -1027,6 +1378,10 @@ function applyLang(lang) {
   document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
     const key = el.getAttribute('data-i18n-placeholder');
     if (t[key] !== undefined) el.placeholder = t[key];
+  });
+  document.querySelectorAll('[data-i18n-aria-label]').forEach(el => {
+    const key = el.getAttribute('data-i18n-aria-label');
+    if (t[key] !== undefined) el.setAttribute('aria-label', t[key]);
   });
   document.querySelectorAll('.lang-btn').forEach(b => {
     b.classList.toggle('active', b.dataset.lang === lang);
@@ -1062,6 +1417,158 @@ const observer = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Creations carousels (women + men): drag, arrows, autoplay until interaction
+(function () {
+  function setupCreationsRow(track, prevBtn, nextBtn, ioRoot) {
+    if (!track) return;
+
+    function cardStep() {
+      const card = track.querySelector('.creation-card');
+      if (!card) return 280;
+      const gap = parseFloat(getComputedStyle(track).gap) || 16;
+      return card.getBoundingClientRect().width + gap;
+    }
+
+    let userStoppedAutoplay = false;
+    let autoplayId = null;
+    let autoplayWarmup = null;
+
+    function disarmAutoplay() {
+      if (autoplayWarmup) {
+        clearTimeout(autoplayWarmup);
+        autoplayWarmup = null;
+      }
+      if (autoplayId) {
+        clearInterval(autoplayId);
+        autoplayId = null;
+      }
+    }
+
+    function stopAutoplayEntirely() {
+      userStoppedAutoplay = true;
+      disarmAutoplay();
+    }
+
+    function autoplayTick() {
+      if (userStoppedAutoplay || document.hidden) return;
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      if (maxScroll <= 0) return;
+      if (track.scrollLeft >= maxScroll - 6) {
+        track.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        track.scrollBy({ left: cardStep(), behavior: 'smooth' });
+      }
+    }
+
+    function armAutoplay() {
+      if (userStoppedAutoplay) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (autoplayId || autoplayWarmup) return;
+      autoplayWarmup = window.setTimeout(() => {
+        autoplayWarmup = null;
+        if (userStoppedAutoplay || document.hidden) return;
+        autoplayTick();
+        autoplayId = window.setInterval(autoplayTick, 4200);
+      }, 2200);
+    }
+
+    if (ioRoot) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((ent) => {
+            if (ent.isIntersecting && ent.intersectionRatio >= 0.15) armAutoplay();
+            else disarmAutoplay();
+          });
+        },
+        { threshold: [0, 0.15, 0.3] }
+      );
+      io.observe(ioRoot);
+    }
+
+    track.addEventListener('wheel', stopAutoplayEntirely, { passive: true });
+    track.addEventListener('touchstart', stopAutoplayEntirely, { passive: true });
+
+    prevBtn?.addEventListener('click', () => {
+      stopAutoplayEntirely();
+      track.scrollBy({ left: -cardStep(), behavior: 'smooth' });
+    });
+    nextBtn?.addEventListener('click', () => {
+      stopAutoplayEntirely();
+      track.scrollBy({ left: cardStep(), behavior: 'smooth' });
+    });
+
+    track.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') stopAutoplayEntirely();
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        track.scrollBy({ left: -cardStep(), behavior: 'smooth' });
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        track.scrollBy({ left: cardStep(), behavior: 'smooth' });
+      }
+    });
+
+    let down = false;
+    let startX = 0;
+    let startScroll = 0;
+    let moved = false;
+
+    track.addEventListener('mousedown', (e) => {
+      if (e.button !== 0) return;
+      if (e.target.closest('a,button,input,select,textarea')) return;
+      stopAutoplayEntirely();
+      down = true;
+      moved = false;
+      startX = e.pageX;
+      startScroll = track.scrollLeft;
+      track.classList.add('is-dragging');
+    });
+
+    function onDragMove(e) {
+      if (!down) return;
+      const dx = e.pageX - startX;
+      if (Math.abs(dx) > 4) moved = true;
+      track.scrollLeft = startScroll - dx;
+    }
+    window.addEventListener('mousemove', onDragMove);
+
+    function endDrag() {
+      if (!down) return;
+      down = false;
+      track.classList.remove('is-dragging');
+    }
+    window.addEventListener('mouseup', endDrag);
+
+    track.addEventListener(
+      'click',
+      (e) => {
+        if (moved) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+        moved = false;
+      },
+      true
+    );
+  }
+
+  const womenRoot = document.getElementById('creations-row-women');
+  const menRoot = document.getElementById('creations-row-men');
+  setupCreationsRow(
+    document.getElementById('creations-track-women'),
+    document.getElementById('creations-prev-women'),
+    document.getElementById('creations-next-women'),
+    womenRoot
+  );
+  setupCreationsRow(
+    document.getElementById('creations-track-men'),
+    document.getElementById('creations-prev-men'),
+    document.getElementById('creations-next-men'),
+    menRoot
+  );
+
+})();
 
 // Form submit
 function handleSubmit(e) {
