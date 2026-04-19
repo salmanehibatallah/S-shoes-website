@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Salmane Shoes — Shoes Manufacturing</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231A1714'/%3E%3Ctext x='16' y='23' font-family='system-ui,-apple-system,sans-serif' font-size='17' font-weight='700' fill='%23C8A97A' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --ink: #1A1714;
+    --tan: #C8A97A;
+    --tan-light: #E8D9C0;
+    --tan-dark: #8B6B3D;
+    --rust: #8B3A1F;
+    --muted: #6B6259;
+    --border: rgba(26,23,20,0.12);
+    --section-pad: clamp(4rem, 10vw, 8rem);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
+
+  body {
+    font-family: 'Syne', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 4vw;
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+    transition: box-shadow 0.3s;
+  }
+  nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.06); }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--tan-dark); }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* LANG SWITCHER */
+  .lang-switcher {
+    display: flex;
+    gap: 0.4rem;
+    margin-left: 2rem;
+    align-items: center;
+    border-left: 1px solid var(--border);
+    padding-left: 2rem;
+  }
+  .lang-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    background: none;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    padding: 3px 7px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .lang-btn:hover { color: var(--ink); border-color: var(--border); }
+  .lang-btn.active {
+    color: var(--tan-dark);
+    border-color: var(--tan);
+    background: var(--tan-light);
+  }
+
+  /* HAMBURGER */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--ink);
+    transition: all 0.3s;
+  }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 72px;
+  }
+  .hero-left {
+    padding: clamp(3rem, 8vw, 7rem) 4vw clamp(3rem, 8vw, 7rem) 4vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    color: var(--tan-dark);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 2rem;
+    height: 1px;
+    background: var(--tan);
+  }
+  .hero-h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.06;
+    letter-spacing: -0.01em;
+    margin-bottom: 2rem;
+    color: var(--ink);
+  }
+  .hero-h1 em {
+    font-style: italic;
+    color: var(--tan-dark);
+  }
+  .hero-sub {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 400px;
+    margin-bottom: 2.5rem;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--ink);
+    color: var(--cream);
+    font-family: 'Syne', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+    align-self: flex-start;
+  }
+  .btn-primary:hover { background: var(--tan-dark); }
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: transparent;
+    color: var(--ink);
+    font-family: 'Syne', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+    border: 1.5px solid var(--ink);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+    margin-left: 1rem;
+  }
+  .btn-outline:hover { background: var(--ink); color: var(--cream); }
+
+  .hero-right {
+    background: var(--ink);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-right-bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    opacity: 0.15;
+    background-image: repeating-linear-gradient(
+      45deg,
+      var(--tan) 0,
+      var(--tan) 1px,
+      transparent 0,
+      transparent 50%
+    );
+    background-size: 20px 20px;
+  }
+  .hero-right-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 2rem;
+  }
+  .hero-badge {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(5rem, 12vw, 10rem);
+    font-weight: 300;
+    color: var(--tan);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    opacity: 0.4;
+  }
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.08);
+    margin-top: 2rem;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-stat {
+    padding: 1.5rem 1rem;
+    text-align: center;
+    background: rgba(26,23,20,0.6);
+  }
+  .hero-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--tan);
+    line-height: 1;
+  }
+  .hero-stat-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(200,169,122,0.6);
+    margin-top: 0.4rem;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: var(--section-pad) 4vw;
+  }
+  .section-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    color: var(--tan-dark);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-eyebrow::before {
+    content: '';
+    display: block;
+    width: 1.5rem;
+    height: 1px;
+    background: var(--tan);
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--ink);
+    max-width: 640px;
+  }
+  .section-title em { font-style: italic; color: var(--tan-dark); }
+
+  /* ABOUT */
+  #about { background: var(--cream); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+    margin-top: 4rem;
+  }
+  .about-img-block {
+    position: relative;
+  }
+  .about-img-placeholder {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--ink);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .about-img-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .about-img-bg {
+    position: absolute;
+    inset: 0;
+    opacity: 0.12;
+    background-image: repeating-linear-gradient(
+      -45deg,
+      var(--tan) 0,
+      var(--tan) 1px,
+      transparent 0,
+      transparent 30px
+    );
+  }
+  .about-img-icon {
+    font-size: 6rem;
+    opacity: 0.2;
+    filter: grayscale(1);
+    position: relative;
+    z-index: 1;
+  }
+  .about-float-card {
+    position: absolute;
+    bottom: -1.5rem;
+    right: -1.5rem;
+    background: var(--tan);
+    padding: 1.5rem 2rem;
+    max-width: 220px;
+  }
+  .about-float-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .about-float-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tan-dark);
+    margin-top: 0.3rem;
+  }
+
+  .about-text h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.75rem;
+  }
+  .about-text p {
+    font-size: 0.92rem;
+    line-height: 1.8;
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+
+  /* SERVICES */
+  #services { background: var(--ink); color: var(--cream); }
+  #services .section-eyebrow { color: var(--tan); }
+  #services .section-eyebrow::before { background: var(--tan); }
+  #services .section-title { color: var(--cream); }
+  #services .section-title em { color: var(--tan); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.06);
+    margin-top: 4rem;
+  }
+  .service-card {
+    background: var(--ink);
+    padding: 2.5rem 2rem;
+    border: 1px solid rgba(200,169,122,0.12);
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--tan);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { background: rgba(200,169,122,0.05); }
+  .service-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--tan-dark);
+    letter-spacing: 0.12em;
+    margin-bottom: 1.5rem;
+  }
+  .service-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.25rem;
+    opacity: 0.85;
+  }
+  .service-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--cream);
+    margin-bottom: 1rem;
+  }
+  .service-card p {
+    font-size: 0.85rem;
+    line-height: 1.75;
+    color: rgba(245,240,232,0.55);
+  }
+  .service-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+  .service-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.06em;
+    color: var(--tan-dark);
+    border: 1px solid rgba(200,169,122,0.3);
+    padding: 3px 10px;
+  }
+
+  /* WHY US */
+  #why { background: var(--tan-light); }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+  }
+  .why-card {
+    background: var(--cream);
+    padding: 2.5rem;
+    border-bottom: 3px solid var(--tan);
+    position: relative;
+  }
+  .why-card-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+    font-weight: 300;
+    color: var(--tan);
+    opacity: 0.4;
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .why-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+  .why-card p {
+    font-size: 0.88rem;
+    line-height: 1.75;
+    color: var(--muted);
+  }
+
+  /* CONTACT */
+  #contact { background: var(--cream); }
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 5rem;
+    align-items: start;
+    margin-top: 4rem;
+  }
+  .contact-info h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--ink);
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  .contact-info p {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--tan-dark);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    transition: gap 0.2s;
+  }
+  .contact-link:hover { gap: 0.8rem; }
+
+  .contact-form {
+    background: white;
+    padding: 2.5rem;
+    border: 1px solid var(--border);
+  }
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  .form-label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+  .form-input, .form-select, .form-textarea {
+    width: 100%;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.9rem;
+    color: var(--ink);
+    background: var(--cream);
+    border: 1px solid var(--border);
+    padding: 0.85rem 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+  }
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: var(--tan);
+  }
+  .form-textarea { resize: vertical; min-height: 120px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    color: rgba(245,240,232,0.5);
+    padding: 2.5rem 4vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  footer .nav-logo { color: var(--cream); }
+  footer p { font-size: 0.78rem; }
+
+  /* MOBILE */
+  @media (max-width: 900px) {
+    #hero { grid-template-columns: 1fr; }
+    .hero-right { min-height: 300px; }
+    .about-grid, .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .services-grid, .why-grid { grid-template-columns: 1fr; }
+    .about-float-card { right: 0; }
+    .form-row { grid-template-columns: 1fr; }
+    .nav-links { display: none; position: fixed; top: 72px; left: 0; right: 0;
+      background: var(--cream); flex-direction: column; padding: 2rem;
+      border-bottom: 1px solid var(--border); gap: 1.5rem; }
+    .nav-links.open { display: flex; }
+    .lang-switcher { border-left: none; padding-left: 0; margin-left: 0; }
+    .hamburger { display: flex; }
+  }
+
+  /* ANIMATIONS */
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s, transform 0.7s; }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  /* MOBILE NAV */
+  .mobile-actions { display: flex; align-items: center; gap: 0.75rem; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="#hero" class="nav-logo">Salmane<span>Shoes</span></a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#about" data-i18n="nav.about">About Us</a></li>
+    <li><a href="#services" data-i18n="nav.services">Services</a></li>
+    <li><a href="#why" data-i18n="nav.why">Why Us</a></li>
+    <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+  </ul>
+  <div class="mobile-actions">
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="fr">FR</button>
+      <button class="lang-btn" data-lang="es">ES</button>
+      <button class="lang-btn" data-lang="pt">PT</button>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow" data-i18n="hero.eyebrow">Morocco — Est. 2006</p>
+    <h1 class="hero-h1" data-i18n="hero.title">Crafting <em>Shoes</em><br>That Carry<br>Your Brand</h1>
+    <p class="hero-sub" data-i18n="hero.sub">Manufacturing premium shoes in Morocco — competitive costs, European proximity, full flexibility from uppers to finished pairs.</p>
+    <div>
+      <a href="#contact" class="btn-primary" data-i18n="hero.cta">Request a Quote →</a>
+      <a href="#services" class="btn-outline" data-i18n="hero.cta2">Our Services</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-bg"></div>
+    <div class="hero-right-content">
+      <div class="hero-badge">S.</div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num" data-i18n="hero.stat1n">20+</div>
+          <div class="hero-stat-label" data-i18n="hero.stat1l">Years Experience</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num" data-i18n="hero.stat2n">50K+</div>
+          <div class="hero-stat-label" data-i18n="hero.stat2l">Pairs / Month</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num" data-i18n="hero.stat3n">30+</div>
+          <div class="hero-stat-label" data-i18n="hero.stat3l">Global Clients</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num" data-i18n="hero.stat4n">3h</div>
+          <div class="hero-stat-label" data-i18n="hero.stat4l">From Europe</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-eyebrow fade-in" data-i18n="about.eyebrow">01 — About Us</p>
+  <h2 class="section-title fade-in" data-i18n="about.title">A Family of <em>Artisans</em>,<br>An Industrial Scale</h2>
+  <div class="about-grid">
+    <div class="about-img-block fade-in">
+      <div class="about-img-placeholder">
+        <img src="https://placehold.co/600x800/1A1714/C8A97A?text=Salmane+Shoes" alt="Salmane Shoes" width="600" height="800" loading="lazy" decoding="async" />
+      </div>
+      <div class="about-float-card">
+        <div class="about-float-num">2006</div>
+        <div class="about-float-label" data-i18n="about.founded">Year Founded</div>
+      </div>
+    </div>
+    <div class="about-text fade-in">
+      <h3 data-i18n="about.h.history">Our History</h3>
+      <p data-i18n="about.p.history">Born from a passion for craftsmanship, Salmane Shoes was founded in 2006 in Morocco with a single workshop and a bold ambition: to bring European-quality shoes to market at competitive manufacturing costs. In nearly two decades, we grew from 10 artisans to a 300-person operation without losing what made us special — attention to every stitch.</p>
+
+      <h3 data-i18n="about.h.experience">Experience & Know-How</h3>
+      <p data-i18n="about.p.experience">We work with brands across France, Spain, Portugal, and the UK — from emerging designers to established labels. Our team masters every technique: Goodyear welt, Blake stitch, cemented construction, and bespoke finishing. Whatever your design demands, we have the skills to execute it precisely.</p>
+
+      <h3 data-i18n="about.h.vision">Our Vision</h3>
+      <p data-i18n="about.p.vision">We believe Morocco is the future of responsible, European-quality manufacturing of shoes. Our vision: to be the preferred partner for brands that want quality, transparency, and a supplier they can actually visit in a single afternoon flight from Paris or Madrid.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <p class="section-eyebrow fade-in" data-i18n="services.eyebrow">02 — Services</p>
+  <h2 class="section-title fade-in" data-i18n="services.title">From <em>Pattern</em><br>to Finished Pair</h2>
+  <div class="services-grid">
+    <div class="service-card fade-in">
+      <div class="service-num">01</div>
+      <div class="service-icon">🪡</div>
+      <h3 data-i18n="s1.title">Uppers for shoes</h3>
+      <p data-i18n="s1.desc">We produce premium uppers for shoes in leather, suede, nubuck, synthetic, and technical fabrics. Full cutting, stitching, skiving, and lasting operations — ready for your sole attachment process.</p>
+      <div class="service-tags">
+        <span class="service-tag" data-i18n="s1.t1">Leather</span>
+        <span class="service-tag" data-i18n="s1.t2">Suede</span>
+        <span class="service-tag" data-i18n="s1.t3">Technical</span>
+        <span class="service-tag" data-i18n="s1.t4">Stitching</span>
+      </div>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-num">02</div>
+      <div class="service-icon">👟</div>
+      <h3 data-i18n="s2.title">Full Shoes Production</h3>
+      <p data-i18n="s2.desc">End-to-end manufacturing from pattern and prototype to finished, boxed shoes. We manage sourcing, quality control, and logistics — you receive production-ready pairs at your door.</p>
+      <div class="service-tags">
+        <span class="service-tag" data-i18n="s2.t1">Prototype</span>
+        <span class="service-tag" data-i18n="s2.t2">Sampling</span>
+        <span class="service-tag" data-i18n="s2.t3">QC</span>
+        <span class="service-tag" data-i18n="s2.t4">Logistics</span>
+      </div>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-num">03</div>
+      <div class="service-icon">🏷️</div>
+      <h3 data-i18n="s3.title">Private Label</h3>
+      <p data-i18n="s3.desc">Launch your own line of shoes with our private label service. We help you develop silhouettes, select materials, create your branding details (insoles, laces, tags), and go to market fast.</p>
+      <div class="service-tags">
+        <span class="service-tag" data-i18n="s3.t1">Branding</span>
+        <span class="service-tag" data-i18n="s3.t2">Design Dev</span>
+        <span class="service-tag" data-i18n="s3.t3">MOQ Flex</span>
+        <span class="service-tag" data-i18n="s3.t4">Fast Track</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <p class="section-eyebrow fade-in" data-i18n="why.eyebrow">03 — Why Us</p>
+  <h2 class="section-title fade-in" data-i18n="why.title">Built for <em>European</em><br>Brands That Demand More</h2>
+  <div class="why-grid">
+    <div class="why-card fade-in">
+      <div class="why-card-num">01</div>
+      <h3 data-i18n="w1.title">Competitive Costs</h3>
+      <p data-i18n="w1.desc">Manufacturing in Morocco delivers 30–50% cost advantage over European factories — without compromising on quality, certifications, or working conditions. Every cent saved goes to your margins or your product.</p>
+    </div>
+    <div class="why-card fade-in">
+      <div class="why-card-num">02</div>
+      <h3 data-i18n="w2.title">European Proximity</h3>
+      <p data-i18n="w2.desc">3 hours from Paris. 2 hours from Madrid. Direct sea freight to major European ports. Visit your production line the same day you take the decision. React to market changes in days, not weeks.</p>
+    </div>
+    <div class="why-card fade-in">
+      <div class="why-card-num">03</div>
+      <h3 data-i18n="w3.title">True Flexibility</h3>
+      <p data-i18n="w3.desc">Small brand or large retailer, we adapt. Low MOQs on first orders, scalable capacity for large runs. Mixed models, quick turnarounds, and a dedicated account manager who answers on WhatsApp.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-eyebrow fade-in" data-i18n="contact.eyebrow">04 — Contact Us</p>
+  <h2 class="section-title fade-in" data-i18n="contact.title">Let's Build<br>Something <em>Together</em></h2>
+  <div class="contact-inner">
+    <div class="contact-info fade-in">
+      <p style="font-size:0.92rem;line-height:1.8;color:var(--muted);margin-top:1rem;" data-i18n="contact.intro">Ready to discuss your project? Reach out via the form, WhatsApp, or email — we typically respond within 24 hours.</p>
+
+      <h3 data-i18n="contact.whatsapp.label">WhatsApp</h3>
+      <p data-i18n="contact.whatsapp.desc">Quick questions, samples, or urgent requests — message us directly.</p>
+      <a href="https://wa.me/[YOUR_REAL_NUMBER_HERE]" class="contact-link" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path></svg>
+        [YOUR REAL NUMBER HERE]
+      </a>
+
+      <h3 data-i18n="contact.email.label">Email</h3>
+      <p data-i18n="contact.email.desc">For detailed inquiries, quotes, and technical specifications.</p>
+      <a href="mailto:hello@solcraft.ma" class="contact-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"></path></svg>
+        hello@solcraft.ma
+      </a>
+
+      <div style="margin-top:2.5rem;padding:1.5rem;background:var(--tan-light);border-left:3px solid var(--tan);">
+        <p style="font-size:0.8rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--tan-dark);margin-bottom:0.5rem;" data-i18n="contact.location.label">Our Location</p>
+        <p style="font-size:0.88rem;color:var(--muted);" data-i18n="contact.location.val">Zone Industrielle, Casablanca, Morocco</p>
+      </div>
+    </div>
+
+    <div class="contact-form fade-in">
+      <form id="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" data-i18n="form.name">Full Name</label>
+            <input class="form-input" type="text" required placeholder="John Smith" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" data-i18n="form.company">Company</label>
+            <input class="form-input" type="text" placeholder="Brand Co." />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="form.email">Email Address</label>
+          <input class="form-input" type="email" required placeholder="you@company.com" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="form.service">Service Interested In</label>
+          <select class="form-select" id="service-select">
+            <option data-i18n="form.s0">— Select a service —</option>
+            <option data-i18n="form.s1">Uppers for shoes</option>
+            <option data-i18n="form.s2">Full Shoes Production</option>
+            <option data-i18n="form.s3">Private Label</option>
+            <option data-i18n="form.s4">Not sure yet</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="form.volume">Estimated Monthly Volume</label>
+          <select class="form-select">
+            <option data-i18n="form.v0">— Select volume —</option>
+            <option data-i18n="form.v1">Under 500 pairs</option>
+            <option data-i18n="form.v2">500 – 2,000 pairs</option>
+            <option data-i18n="form.v3">2,000 – 10,000 pairs</option>
+            <option data-i18n="form.v4">10,000+ pairs</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="form.message">Message</label>
+          <textarea class="form-textarea" data-i18n-placeholder="form.messagePh" placeholder="Tell us about your project, timeline, and any specific requirements..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;" data-i18n="form.submit">Send Message →</button>
+        <div id="form-success" style="display:none;margin-top:1rem;padding:1rem;background:#eaf3de;color:#3B6D11;font-size:0.85rem;font-weight:600;" data-i18n="form.success">Thank you! We'll be in touch within 24 hours.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#hero" class="nav-logo">Salmane<span style="color:var(--tan)">Shoes</span></a>
+  <p data-i18n="footer.copy">© 2025 Salmane Shoes Morocco. All rights reserved.</p>
+</footer>
+
+<script>
+// ─── TRANSLATIONS ────────────────────────────────────────────────
+const i18n = {
+  en: {
+    "nav.about":"About Us","nav.services":"Services","nav.why":"Why Us","nav.contact":"Contact",
+    "hero.eyebrow":"Morocco — Est. 2006",
+    "hero.title":"Crafting <em>Shoes</em><br>That Carry<br>Your Brand",
+    "hero.sub":"Manufacturing premium shoes in Morocco — competitive costs, European proximity, full flexibility from uppers to finished pairs.",
+    "hero.cta":"Request a Quote →","hero.cta2":"Our Services",
+    "hero.stat1n":"20+","hero.stat1l":"Years Experience","hero.stat2n":"50K+","hero.stat2l":"Pairs / Month",
+    "hero.stat3n":"30+","hero.stat3l":"Global Clients","hero.stat4n":"3h","hero.stat4l":"From Europe",
+    "about.eyebrow":"01 — About Us",
+    "about.title":"A Family of <em>Artisans</em>,<br>An Industrial Scale",
+    "about.founded":"Year Founded",
+    "about.h.history":"Our History","about.h.experience":"Experience & Know-How","about.h.vision":"Our Vision",
+    "about.p.history":"Born from a passion for craftsmanship, Salmane Shoes was founded in 2006 in Morocco with a single workshop and a bold ambition: to bring European-quality shoes to market at competitive manufacturing costs. In nearly two decades, we grew from 10 artisans to a 300-person operation without losing what made us special — attention to every stitch.",
+    "about.p.experience":"We work with brands across France, Spain, Portugal, and the UK — from emerging designers to established labels. Our team masters every technique: Goodyear welt, Blake stitch, cemented construction, and bespoke finishing. Whatever your design demands, we have the skills to execute it precisely.",
+    "about.p.vision":"We believe Morocco is the future of responsible, European-quality manufacturing of shoes. Our vision: to be the preferred partner for brands that want quality, transparency, and a supplier they can actually visit in a single afternoon flight from Paris or Madrid.",
+    "services.eyebrow":"02 — Services",
+    "services.title":"From <em>Pattern</em><br>to Finished Pair",
+    "s1.title":"Uppers for shoes","s1.desc":"We produce premium uppers for shoes in leather, suede, nubuck, synthetic, and technical fabrics. Full cutting, stitching, skiving, and lasting operations — ready for your sole attachment process.","s1.t1":"Leather","s1.t2":"Suede","s1.t3":"Technical","s1.t4":"Stitching",
+    "s2.title":"Full Shoes Production","s2.desc":"End-to-end manufacturing from pattern and prototype to finished, boxed shoes. We manage sourcing, quality control, and logistics — you receive production-ready pairs at your door.","s2.t1":"Prototype","s2.t2":"Sampling","s2.t3":"QC","s2.t4":"Logistics",
+    "s3.title":"Private Label","s3.desc":"Launch your own line of shoes with our private label service. We help you develop silhouettes, select materials, create your branding details (insoles, laces, tags), and go to market fast.","s3.t1":"Branding","s3.t2":"Design Dev","s3.t3":"MOQ Flex","s3.t4":"Fast Track",
+    "why.eyebrow":"03 — Why Us",
+    "why.title":"Built for <em>European</em><br>Brands That Demand More",
+    "w1.title":"Competitive Costs","w1.desc":"Manufacturing in Morocco delivers 30–50% cost advantage over European factories — without compromising on quality, certifications, or working conditions. Every cent saved goes to your margins or your product.",
+    "w2.title":"European Proximity","w2.desc":"3 hours from Paris. 2 hours from Madrid. Direct sea freight to major European ports. Visit your production line the same day you take the decision. React to market changes in days, not weeks.",
+    "w3.title":"True Flexibility","w3.desc":"Small brand or large retailer, we adapt. Low MOQs on first orders, scalable capacity for large runs. Mixed models, quick turnarounds, and a dedicated account manager who answers on WhatsApp.",
+    "contact.eyebrow":"04 — Contact Us",
+    "contact.title":"Let's Build<br>Something <em>Together</em>",
+    "contact.intro":"Ready to discuss your project? Reach out via the form, WhatsApp, or email — we typically respond within 24 hours.",
+    "contact.whatsapp.label":"WhatsApp","contact.whatsapp.desc":"Quick questions, samples, or urgent requests — message us directly.",
+    "contact.email.label":"Email","contact.email.desc":"For detailed inquiries, quotes, and technical specifications.",
+    "contact.location.label":"Our Location","contact.location.val":"Zone Industrielle, Casablanca, Morocco",
+    "form.name":"Full Name","form.company":"Company","form.email":"Email Address","form.service":"Service Interested In",
+    "form.s0":"— Select a service —","form.s1":"Uppers for shoes","form.s2":"Full Shoes Production","form.s3":"Private Label","form.s4":"Not sure yet",
+    "form.volume":"Estimated Monthly Volume","form.v0":"— Select volume —","form.v1":"Under 500 pairs","form.v2":"500 – 2,000 pairs","form.v3":"2,000 – 10,000 pairs","form.v4":"10,000+ pairs",
+    "form.message":"Message","form.messagePh":"Tell us about your project, timeline, and any specific requirements...","form.submit":"Send Message →",
+    "form.success":"Thank you! We'll be in touch within 24 hours.",
+    "footer.copy":"© 2025 Salmane Shoes Morocco. All rights reserved."
+  },
+  fr: {
+    "nav.about":"À propos","nav.services":"Services","nav.why":"Pourquoi nous","nav.contact":"Contact",
+    "hero.eyebrow":"Maroc — Fondé en 2006",
+    "hero.title":"Fabriquer des <em>chaussures</em><br>qui Portent<br>Votre Marque",
+    "hero.sub":"Fabrication de chaussures premium au Maroc — coûts compétitifs, proximité européenne, flexibilité totale des tiges aux paires finies.",
+    "hero.cta":"Demander un Devis →","hero.cta2":"Nos Services",
+    "hero.stat1n":"20+","hero.stat1l":"Ans d'expérience","hero.stat2n":"50K+","hero.stat2l":"Paires / Mois",
+    "hero.stat3n":"30+","hero.stat3l":"Clients Mondiaux","hero.stat4n":"3h","hero.stat4l":"De l'Europe",
+    "about.eyebrow":"01 — À propos",
+    "about.title":"Une Famille d'<em>Artisans</em>,<br>Une Échelle Industrielle",
+    "about.founded":"Année de création",
+    "about.h.history":"Notre Histoire","about.h.experience":"Expérience & Savoir-Faire","about.h.vision":"Notre Vision",
+    "about.p.history":"Née d'une passion pour l'artisanat, Salmane Shoes a été fondée en 2006 au Maroc avec un seul atelier et une ambition audacieuse : apporter la qualité européenne de la fabrication de chaussures à des coûts compétitifs. En près de 20 ans, nous sommes passés de 10 artisans à une équipe de 300 personnes sans perdre ce qui nous rend spéciaux — l'attention portée à chaque point.",
+    "about.p.experience":"Nous travaillons avec des marques en France, Espagne, Portugal et Royaume-Uni — des créateurs émergents aux labels établis. Notre équipe maîtrise toutes les techniques : couture Goodyear, point Blake, construction collée et finitions sur mesure.",
+    "about.p.vision":"Nous croyons que le Maroc est l'avenir de la fabrication de chaussures européenne responsable. Notre vision : être le partenaire privilégié des marques qui veulent qualité, transparence et un fournisseur accessible en un simple vol depuis Paris ou Madrid.",
+    "services.eyebrow":"02 — Services",
+    "services.title":"Du <em>Patron</em><br>à la Paire Finie",
+    "s1.title":"Fabrication de tiges pour chaussures","s1.desc":"Nous produisons des tiges de chaussures premium en cuir, daim, nubuck, synthétique et matières techniques. Découpe, couture, parage et montage complets — prêts pour votre processus d'assemblage de semelles.","s1.t1":"Cuir","s1.t2":"Daim","s1.t3":"Technique","s1.t4":"Couture",
+    "s2.title":"Production complète de chaussures","s2.desc":"Fabrication de bout en bout, du patron et prototype au produit fini (chaussures) en boîte. Nous gérons l'approvisionnement, le contrôle qualité et la logistique — vous recevez des paires prêtes à la vente.","s2.t1":"Prototype","s2.t2":"Échantillon","s2.t3":"CQ","s2.t4":"Logistique",
+    "s3.title":"Marque Privée","s3.desc":"Lancez votre propre ligne de chaussures avec notre service de marque privée. Nous vous aidons à développer des silhouettes, sélectionner des matériaux, créer vos détails de marque et aller rapidement sur le marché.","s3.t1":"Branding","s3.t2":"Développement","s3.t3":"MOQ Flex","s3.t4":"Rapide",
+    "why.eyebrow":"03 — Pourquoi nous",
+    "why.title":"Conçu pour les <em>Marques Européennes</em><br>Exigeantes",
+    "w1.title":"Coûts Compétitifs","w1.desc":"La fabrication au Maroc offre un avantage de coût de 30 à 50 % par rapport aux usines européennes — sans compromettre la qualité, les certifications ou les conditions de travail.",
+    "w2.title":"Proximité Européenne","w2.desc":"3 heures de Paris. 2 heures de Madrid. Fret maritime direct vers les grands ports européens. Visitez votre ligne de production le jour même de votre décision.",
+    "w3.title":"Flexibilité Totale","w3.desc":"Petite marque ou grand distributeur, nous nous adaptons. Faibles MOQs sur les premières commandes, capacité évolutive pour les grandes séries. Un responsable de compte dédié qui répond sur WhatsApp.",
+    "contact.eyebrow":"04 — Contactez-nous",
+    "contact.title":"Construisons<br><em>Ensemble</em>",
+    "contact.intro":"Prêt à discuter de votre projet ? Contactez-nous via le formulaire, WhatsApp ou email — nous répondons généralement sous 24 heures.",
+    "contact.whatsapp.label":"WhatsApp","contact.whatsapp.desc":"Questions rapides, échantillons ou demandes urgentes — messagez-nous directement.",
+    "contact.email.label":"Email","contact.email.desc":"Pour les demandes détaillées, devis et spécifications techniques.",
+    "contact.location.label":"Notre Adresse","contact.location.val":"Zone Industrielle, Casablanca, Maroc",
+    "form.name":"Nom Complet","form.company":"Entreprise","form.email":"Adresse Email","form.service":"Service Souhaité",
+    "form.s0":"— Sélectionner —","form.s1":"Fabrication de tiges pour chaussures","form.s2":"Production complète de chaussures","form.s3":"Marque Privée","form.s4":"Pas encore sûr",
+    "form.volume":"Volume Mensuel Estimé","form.v0":"— Sélectionner —","form.v1":"Moins de 500 paires","form.v2":"500 – 2 000 paires","form.v3":"2 000 – 10 000 paires","form.v4":"10 000+ paires",
+    "form.message":"Message","form.messagePh":"Parlez-nous de votre projet, délais et exigences spécifiques...","form.submit":"Envoyer →",
+    "form.success":"Merci ! Nous vous contacterons dans les 24 heures.",
+    "footer.copy":"© 2025 Salmane Shoes Maroc. Tous droits réservés."
+  },
+  es: {
+    "nav.about":"Nosotros","nav.services":"Servicios","nav.why":"Por qué nosotros","nav.contact":"Contacto",
+    "hero.eyebrow":"Marruecos — Est. 2006",
+    "hero.title":"Fabricando <em>zapatos</em><br>que Llevan<br>Tu Marca",
+    "hero.sub":"Fabricación premium de zapatos en Marruecos — costos competitivos, proximidad europea y total flexibilidad desde cortes hasta pares terminados.",
+    "hero.cta":"Solicitar Presupuesto →","hero.cta2":"Nuestros Servicios",
+    "hero.stat1n":"20+","hero.stat1l":"Años de Exp.","hero.stat2n":"50K+","hero.stat2l":"Pares / Mes",
+    "hero.stat3n":"30+","hero.stat3l":"Clientes Globales","hero.stat4n":"3h","hero.stat4l":"Desde Europa",
+    "about.eyebrow":"01 — Nosotros",
+    "about.title":"Una Familia de <em>Artesanos</em>,<br>Escala Industrial",
+    "about.founded":"Año de fundación",
+    "about.h.history":"Nuestra Historia","about.h.experience":"Experiencia y Know-How","about.h.vision":"Nuestra Visión",
+    "about.p.history":"Nacida de la pasión por la artesanía, Salmane Shoes fue fundada en 2006 en Marruecos con un único taller y una ambición audaz: ofrecer calidad europea en la fabricación de zapatos a costos competitivos. En casi 20 años crecimos de 10 artesanos a 300 personas sin perder lo que nos hace especiales.",
+    "about.p.experience":"Trabajamos con marcas de Francia, España, Portugal y Reino Unido — desde diseñadores emergentes hasta marcas consolidadas. Nuestro equipo domina todas las técnicas: costura Goodyear, Blake stitch, construcción pegada y acabados a medida.",
+    "about.p.vision":"Creemos que Marruecos es el futuro de la fabricación responsable de zapatos con calidad europea. Ser el socio preferido de marcas que buscan calidad, transparencia y un proveedor al que pueden visitar en una tarde desde Madrid o París.",
+    "services.eyebrow":"02 — Servicios",
+    "services.title":"Del <em>Patrón</em><br>al Par Terminado",
+    "s1.title":"Cortes para zapatos","s1.desc":"Producimos cortes premium en piel, ante, nubuck, sintéticos y materiales técnicos. Corte, cosido, desbastado y montado completos — listos para unir la suela.","s1.t1":"Piel","s1.t2":"Ante","s1.t3":"Técnico","s1.t4":"Costura",
+    "s2.title":"Producción completa de zapatos","s2.desc":"Fabricación de extremo a extremo, desde patrón y prototipo hasta zapatos terminados y en caja. Gestionamos aprovisionamiento, control de calidad y logística.","s2.t1":"Prototipo","s2.t2":"Muestras","s2.t3":"CC","s2.t4":"Logística",
+    "s3.title":"Marca Privada","s3.desc":"Lanza tu propia línea de zapatos con nuestro servicio de marca privada. Te ayudamos a desarrollar siluetas, seleccionar materiales, crear tu branding y salir al mercado rápido.","s3.t1":"Branding","s3.t2":"Desarrollo","s3.t3":"MOQ Flex","s3.t4":"Rápido",
+    "why.eyebrow":"03 — Por qué nosotros",
+    "why.title":"Para Marcas <em>Europeas</em><br>que Exigen Más",
+    "w1.title":"Costos Competitivos","w1.desc":"Fabricar en Marruecos supone una ventaja de coste del 30–50% frente a fábricas europeas, sin comprometer calidad, certificaciones ni condiciones laborales.",
+    "w2.title":"Proximidad Europea","w2.desc":"3 horas de París. 2 horas de Madrid. Flete marítimo directo a puertos europeos. Visita tu línea de producción el mismo día que tomas la decisión.",
+    "w3.title":"Flexibilidad Real","w3.desc":"Marca pequeña o gran distribuidor, nos adaptamos. MOQs bajos en primeros pedidos, capacidad escalable para grandes producciones y un gestor de cuenta en WhatsApp.",
+    "contact.eyebrow":"04 — Contacto",
+    "contact.title":"Creemos<br>Algo <em>Juntos</em>",
+    "contact.intro":"¿Listo para hablar de tu proyecto? Escríbenos por el formulario, WhatsApp o email — respondemos en menos de 24 horas.",
+    "contact.whatsapp.label":"WhatsApp","contact.whatsapp.desc":"Preguntas rápidas, muestras o solicitudes urgentes — escríbenos directamente.",
+    "contact.email.label":"Email","contact.email.desc":"Para consultas detalladas, presupuestos y especificaciones técnicas.",
+    "contact.location.label":"Nuestra Ubicación","contact.location.val":"Zona Industrial, Casablanca, Marruecos",
+    "form.name":"Nombre Completo","form.company":"Empresa","form.email":"Correo Electrónico","form.service":"Servicio de Interés",
+    "form.s0":"— Seleccionar —","form.s1":"Cortes para zapatos","form.s2":"Producción completa de zapatos","form.s3":"Marca Privada","form.s4":"Aún no lo sé",
+    "form.volume":"Volumen Mensual Estimado","form.v0":"— Seleccionar —","form.v1":"Menos de 500 pares","form.v2":"500 – 2.000 pares","form.v3":"2.000 – 10.000 pares","form.v4":"10.000+ pares",
+    "form.message":"Mensaje","form.messagePh":"Cuéntanos sobre tu proyecto, plazos y requisitos específicos...","form.submit":"Enviar Mensaje →",
+    "form.success":"¡Gracias! Te contactaremos en menos de 24 horas.",
+    "footer.copy":"© 2025 Salmane Shoes Marruecos. Todos los derechos reservados."
+  },
+  pt: {
+    "nav.about":"Sobre nós","nav.services":"Serviços","nav.why":"Por que nós","nav.contact":"Contacto",
+    "hero.eyebrow":"Marrocos — Fund. 2006",
+    "hero.title":"Criando <em>sapatos</em><br>que Carregam<br>a Sua Marca",
+    "hero.sub":"Produção premium de sapatos em Marrocos — custos competitivos, proximidade europeia e total flexibilidade de cortes a pares acabados.",
+    "hero.cta":"Pedir Orçamento →","hero.cta2":"Os Nossos Serviços",
+    "hero.stat1n":"20+","hero.stat1l":"Anos Exp.","hero.stat2n":"50K+","hero.stat2l":"Pares / Mês",
+    "hero.stat3n":"30+","hero.stat3l":"Clientes Globais","hero.stat4n":"3h","hero.stat4l":"Da Europa",
+    "about.eyebrow":"01 — Sobre nós",
+    "about.title":"Uma Família de <em>Artesãos</em>,<br>Escala Industrial",
+    "about.founded":"Ano de fundação",
+    "about.h.history":"A Nossa História","about.h.experience":"Experiência & Know-How","about.h.vision":"A Nossa Visão",
+    "about.p.history":"Nascida de uma paixão pelo artesanato, a Salmane Shoes foi fundada em 2006 em Marrocos com um único atelier e uma ambição ousada: oferecer qualidade europeia na produção de sapatos a custos competitivos. Em quase 20 anos crescemos de 10 artesãos para 300 pessoas sem perder o que nos torna especiais.",
+    "about.p.experience":"Trabalhamos com marcas de França, Espanha, Portugal e Reino Unido — de designers emergentes a marcas estabelecidas. A nossa equipa domina todas as técnicas: costura Goodyear, Blake stitch, construção colada e acabamentos personalizados.",
+    "about.p.vision":"Acreditamos que Marrocos é o futuro da produção responsável de sapatos com qualidade europeia. Ser o parceiro preferido de marcas que querem qualidade, transparência e um fornecedor que podem visitar numa tarde de voo desde Lisboa ou Madrid.",
+    "services.eyebrow":"02 — Serviços",
+    "services.title":"Do <em>Molde</em><br>ao Par Acabado",
+    "s1.title":"Cortes para sapatos","s1.desc":"Produzimos cortes premium em couro, camurça, nubuck, sintéticos e materiais técnicos. Corte, costura, esplitar e montagem completos — prontos para o seu processo de colagem de solas.","s1.t1":"Couro","s1.t2":"Camurça","s1.t3":"Técnico","s1.t4":"Costura",
+    "s2.title":"Produção completa de sapatos","s2.desc":"Produção de ponta a ponta, do molde e protótipo a sapatos acabados em caixa. Gerimos o aprovisionamento, controlo de qualidade e logística — recebe pares prontos à venda.","s2.t1":"Protótipo","s2.t2":"Amostras","s2.t3":"CQ","s2.t4":"Logística",
+    "s3.title":"Marca Própria","s3.desc":"Lance a sua linha de sapatos com o nosso serviço de marca própria. Ajudamos a desenvolver silhuetas, seleccionar materiais, criar os seus detalhes de marca e entrar no mercado rapidamente.","s3.t1":"Branding","s3.t2":"Desenvolvimento","s3.t3":"MOQ Flex","s3.t4":"Rápido",
+    "why.eyebrow":"03 — Por que nós",
+    "why.title":"Para Marcas <em>Europeias</em><br>que Exigem Mais",
+    "w1.title":"Custos Competitivos","w1.desc":"Produzir em Marrocos oferece uma vantagem de custo de 30–50% face a fábricas europeias — sem comprometer qualidade, certificações ou condições laborais.",
+    "w2.title":"Proximidade Europeia","w2.desc":"3 horas de Paris. 2 horas de Madrid. Frete marítimo directo para os principais portos europeus. Visite a linha de produção no mesmo dia em que toma a decisão.",
+    "w3.title":"Flexibilidade Real","w3.desc":"Marca pequena ou grande retalhista, adaptamo-nos. MOQs baixos nas primeiras encomendas, capacidade escalável para grandes séries e um gestor de conta dedicado no WhatsApp.",
+    "contact.eyebrow":"04 — Contacto",
+    "contact.title":"Vamos Criar<br><em>Juntos</em>",
+    "contact.intro":"Pronto para falar do seu projecto? Contacte-nos pelo formulário, WhatsApp ou email — respondemos geralmente em 24 horas.",
+    "contact.whatsapp.label":"WhatsApp","contact.whatsapp.desc":"Perguntas rápidas, amostras ou pedidos urgentes — envie-nos uma mensagem directamente.",
+    "contact.email.label":"Email","contact.email.desc":"Para consultas detalhadas, orçamentos e especificações técnicas.",
+    "contact.location.label":"A Nossa Localização","contact.location.val":"Zona Industrial, Casablanca, Marrocos",
+    "form.name":"Nome Completo","form.company":"Empresa","form.email":"Endereço de Email","form.service":"Serviço de Interesse",
+    "form.s0":"— Seleccionar —","form.s1":"Cortes para sapatos","form.s2":"Produção completa de sapatos","form.s3":"Marca Própria","form.s4":"Ainda não sei",
+    "form.volume":"Volume Mensal Estimado","form.v0":"— Seleccionar —","form.v1":"Menos de 500 pares","form.v2":"500 – 2.000 pares","form.v3":"2.000 – 10.000 pares","form.v4":"10.000+ pares",
+    "form.message":"Mensagem","form.messagePh":"Fale-nos do seu projecto, prazos e requisitos específicos...","form.submit":"Enviar Mensagem →",
+    "form.success":"Obrigado! Entraremos em contacto em 24 horas.",
+    "footer.copy":"© 2025 Salmane Shoes Marrocos. Todos os direitos reservados."
+  }
+};
+
+let currentLang = 'en';
+
+function applyLang(lang) {
+  currentLang = lang;
+  const t = i18n[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (t[key] !== undefined) el.placeholder = t[key];
+  });
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+  document.documentElement.lang = lang;
+}
+
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+});
+
+// NAV scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// Hamburger
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('nav-links').classList.toggle('open');
+});
+
+// Close menu on link click
+document.querySelectorAll('#nav-links a').forEach(a => {
+  a.addEventListener('click', () => document.getElementById('nav-links').classList.remove('open'));
+});
+
+// Scroll animations
+const observer = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Form submit
+function handleSubmit(e) {
+  e.preventDefault();
+  document.getElementById('form-success').style.display = 'block';
+  e.target.reset();
+  setTimeout(() => {
+    document.getElementById('form-success').style.display = 'none';
+  }, 5000);
+}
+
+// Init
+applyLang('en');
+</script>
+</body>
+</html>
