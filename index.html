@@ -760,14 +760,17 @@
     .services-grid, .why-grid { grid-template-columns: 1fr; }
     .about-float-card { right: 0; }
     .form-row { grid-template-columns: 1fr; }
-    .nav-links { display: none; position: fixed; top: 72px; left: 0; right: 0;
+    .nav-links { display: none; position: fixed; top: 62px; left: 0; right: 0;
       background: var(--cream); flex-direction: column; padding: 2rem;
       border-bottom: 1px solid var(--border); gap: 1.5rem; }
     .nav-links.open { display: flex; }
-    .lang-switcher { border-left: none; padding-left: 0; margin-left: 0; }
+    nav { padding: 0.75rem 4vw; }
+    .lang-switcher { border-left: none; padding-left: 0; margin-left: 0; gap: 0.2rem; }
+    .lang-btn { font-size: 0.62rem; padding: 2px 5px; }
+    .mobile-actions { gap: 0.5rem; }
     .hamburger { display: flex; }
-    .nav-logo.nav-brand { font-size: 1.12rem; letter-spacing: 0.08em; gap: 0.5rem; }
-    .nav-brand-mark { height: 30px; max-width: 40px; }
+    .nav-logo.nav-brand { font-size: 1rem; letter-spacing: 0.06em; gap: 0.4rem; }
+    .nav-brand-mark { height: 26px; max-width: 36px; }
   }
 
   /* ANIMATIONS */
@@ -1023,18 +1026,17 @@
       <button type="button" class="creations-nav creations-nav--next" id="creations-next-men" aria-controls="creations-track-men" data-i18n-aria-label="creations.next" aria-label="Next"><span aria-hidden="true">›</span></button>
       <div class="creations-track" id="creations-track-men" tabindex="0" role="region" data-i18n-aria-label="creations.regionMen" aria-label="Men’s creations">
         <article class="creation-card">
-          <div class="creation-card-media"><img src="shoes/Bosque.PNG" alt="" width="280" height="267" loading="lazy" decoding="async" draggable="false" /></div>
+          <div class="creation-card-media"><img src="shoes/Bosque.PNG" alt="Bosque" width="280" height="267" loading="lazy" decoding="async" draggable="false" /></div>
           <div class="creation-card-body">
             <h3 data-i18n="creations.m1.title">Bosque</h3>
-            <p class="creation-card-desc" data-i18n="creations.m1.desc">Olive green suede moc-toe lace-up on a white sport sole. Casual style rooted in nature.
-            </p>
+            <p class="creation-card-desc" data-i18n="creations.m1.desc">Olive green suede moc-toe lace-up on a white sport sole. Casual style rooted in nature.</p>
           </div>
         </article>
         <article class="creation-card">
-          <div class="creation-card-media"><img src="shoes/Marea.PNG" alt="" width="280" height="267" loading="lazy" decoding="async" draggable="false" /></div>
+          <div class="creation-card-media"><img src="shoes/Marea.PNG" alt="Marea" width="280" height="267" loading="lazy" decoding="async" draggable="false" /></div>
           <div class="creation-card-body">
-            <h3 data-i18n="creations.m2.title">New models</h3>
-            <p class="creation-card-desc" data-i18n="creations.m2.desc">Follow this space for derby, sneaker, and boot previews.</p>
+            <h3 data-i18n="creations.m2.title">Marea</h3>
+            <p class="creation-card-desc" data-i18n="creations.m2.desc">Navy pebbled leather and black suede boat shoe on a white sport sole. Nautical spirit, modern grip.</p>
           </div>
         </article>
         <article class="creation-card">
@@ -1059,21 +1061,21 @@
 
       <h3 data-i18n="contact.whatsapp.label">WhatsApp</h3>
       <p data-i18n="contact.whatsapp.desc">Quick questions, samples, or urgent requests — message us directly.</p>
-      <a href="https://wa.me/[YOUR_REAL_NUMBER_HERE]" class="contact-link" target="_blank" rel="noopener">
+      <a href="https://wa.me/212667584474" class="contact-link" target="_blank" rel="noopener">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path></svg>
-        [YOUR REAL NUMBER HERE]
+        +212 667 584 474
       </a>
 
       <h3 data-i18n="contact.email.label">Email</h3>
       <p data-i18n="contact.email.desc">For detailed inquiries, quotes, and technical specifications.</p>
-      <a href="mailto:hello@solcraft.ma" class="contact-link">
+      <a href="mailto:salmane3373@gmail.com" class="contact-link">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"></path></svg>
-        hello@solcraft.ma
+        salmane3373@gmail.com
       </a>
 
       <div style="margin-top:2.5rem;padding:1.5rem;background:var(--tan-light);border-left:3px solid var(--tan);">
         <p style="font-size:0.8rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--tan-dark);margin-bottom:0.5rem;" data-i18n="contact.location.label">Our Location</p>
-        <p style="font-size:0.88rem;color:var(--muted);" data-i18n="contact.location.val">Zone Industrielle, Casablanca, Morocco</p>
+        <p style="font-size:0.88rem;color:var(--muted);" data-i18n="contact.location.val">Bd Chefchaouni (Ain Sebaa), lot. Tabiha, 4° étg. 20600 Casablanca — Maroc</p>
       </div>
     </div>
 
@@ -1082,7 +1084,7 @@
         <div class="form-row">
           <div class="form-group">
             <label class="form-label" data-i18n="form.name">Full Name</label>
-            <input class="form-input" type="text" required placeholder="John Smith" />
+            <input class="form-input" type="text" required />
           </div>
           <div class="form-group">
             <label class="form-label" data-i18n="form.company">Company</label>
@@ -1091,7 +1093,7 @@
         </div>
         <div class="form-group">
           <label class="form-label" data-i18n="form.email">Email Address</label>
-          <input class="form-input" type="email" required placeholder="you@company.com" />
+          <input class="form-input" type="email" required placeholder="votre@email.com" />
         </div>
         <div class="form-group">
           <label class="form-label" data-i18n="form.service">Service Interested In</label>
@@ -1185,7 +1187,7 @@ const i18n = {
     "contact.intro":"Ready to discuss your project? Reach out via the form, WhatsApp, or email — we typically respond within 24 hours.",
     "contact.whatsapp.label":"WhatsApp","contact.whatsapp.desc":"Quick questions, samples, or urgent requests — message us directly.",
     "contact.email.label":"Email","contact.email.desc":"For detailed inquiries, quotes, and technical specifications.",
-    "contact.location.label":"Our Location","contact.location.val":"Zone Industrielle, Casablanca, Morocco",
+    "contact.location.label":"Our Location","contact.location.val":"bd Chefchaouni (Ain Sebaa) , lot. Tabiha, 4° étg. 20600 Casablanca - Maroc",
     "form.name":"Full Name","form.company":"Company","form.email":"Email Address","form.service":"Service Interested In",
     "form.s0":"— Select a service —","form.s1":"Uppers for shoes","form.s2":"Full Shoes Production","form.s3":"Private Label","form.s4":"Not sure yet",
     "form.volume":"Estimated Monthly Volume","form.v0":"— Select volume —","form.v1":"Under 500 pairs","form.v2":"500 – 2,000 pairs","form.v3":"2,000 – 10,000 pairs","form.v4":"10,000+ pairs",
@@ -1242,7 +1244,7 @@ const i18n = {
     "contact.intro":"Prêt à discuter de votre projet ? Contactez-nous via le formulaire, WhatsApp ou email — nous répondons généralement sous 24 heures.",
     "contact.whatsapp.label":"WhatsApp","contact.whatsapp.desc":"Questions rapides, échantillons ou demandes urgentes — messagez-nous directement.",
     "contact.email.label":"Email","contact.email.desc":"Pour les demandes détaillées, devis et spécifications techniques.",
-    "contact.location.label":"Notre Adresse","contact.location.val":"Zone Industrielle, Casablanca, Maroc",
+    "contact.location.label":"Notre Adresse","contact.location.val":"Bd Chefchaouni (Ain Sebaa), lot. Tabiha, 4° étg. 20600 Casablanca - Maroc",
     "form.name":"Nom Complet","form.company":"Entreprise","form.email":"Adresse Email","form.service":"Service Souhaité",
     "form.s0":"— Sélectionner —","form.s1":"Fabrication de tiges pour chaussures","form.s2":"Production complète de chaussures","form.s3":"Marque Privée","form.s4":"Pas encore sûr",
     "form.volume":"Volume Mensuel Estimé","form.v0":"— Sélectionner —","form.v1":"Moins de 500 paires","form.v2":"500 – 2 000 paires","form.v3":"2 000 – 10 000 paires","form.v4":"10 000+ paires",
@@ -1299,7 +1301,7 @@ const i18n = {
     "contact.intro":"¿Listo para hablar de tu proyecto? Escríbenos por el formulario, WhatsApp o email — respondemos en menos de 24 horas.",
     "contact.whatsapp.label":"WhatsApp","contact.whatsapp.desc":"Preguntas rápidas, muestras o solicitudes urgentes — escríbenos directamente.",
     "contact.email.label":"Email","contact.email.desc":"Para consultas detalladas, presupuestos y especificaciones técnicas.",
-    "contact.location.label":"Nuestra Ubicación","contact.location.val":"Zona Industrial, Casablanca, Marruecos",
+    "contact.location.label":"Nuestra Ubicación","contact.location.val":"Bd Chefchaouni (Ain Sebaa), lot. Tabiha, 4° étg. 20600 Casablanca - Marruecos",
     "form.name":"Nombre Completo","form.company":"Empresa","form.email":"Correo Electrónico","form.service":"Servicio de Interés",
     "form.s0":"— Seleccionar —","form.s1":"Cortes para zapatos","form.s2":"Producción completa de zapatos","form.s3":"Marca Privada","form.s4":"Aún no lo sé",
     "form.volume":"Volumen Mensual Estimado","form.v0":"— Seleccionar —","form.v1":"Menos de 500 pares","form.v2":"500 – 2.000 pares","form.v3":"2.000 – 10.000 pares","form.v4":"10.000+ pares",
@@ -1356,7 +1358,7 @@ const i18n = {
     "contact.intro":"Pronto para falar do seu projecto? Contacte-nos pelo formulário, WhatsApp ou email — respondemos geralmente em 24 horas.",
     "contact.whatsapp.label":"WhatsApp","contact.whatsapp.desc":"Perguntas rápidas, amostras ou pedidos urgentes — envie-nos uma mensagem directamente.",
     "contact.email.label":"Email","contact.email.desc":"Para consultas detalhadas, orçamentos e especificações técnicas.",
-    "contact.location.label":"A Nossa Localização","contact.location.val":"Zona Industrial, Casablanca, Marrocos",
+    "contact.location.label":"A Nossa Localização","contact.location.val":"Bd Chefchaouni (Ain Sebaa), lot. Tabiha, 4° étg. 20600 Casablanca - Marrocos",
     "form.name":"Nome Completo","form.company":"Empresa","form.email":"Endereço de Email","form.service":"Serviço de Interesse",
     "form.s0":"— Seleccionar —","form.s1":"Cortes para sapatos","form.s2":"Produção completa de sapatos","form.s3":"Marca Própria","form.s4":"Ainda não sei",
     "form.volume":"Volume Mensal Estimado","form.v0":"— Seleccionar —","form.v1":"Menos de 500 pares","form.v2":"500 – 2.000 pares","form.v3":"2.000 – 10.000 pares","form.v4":"10.000+ pares",
